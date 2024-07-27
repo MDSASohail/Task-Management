@@ -15,5 +15,5 @@ Delete a note permanently.
 ## Searching
 We can search notes based on two criteria:
 
-By title
-By content
+ 1:- By title
+2:- By content
