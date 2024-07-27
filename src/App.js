@@ -73,6 +73,8 @@ function App() {
    console.log("To delete ",id)
     const rest = allNotes.filter((item) =>item.id !== id);
     setAllNotes(rest);
+    const filterNo=filteredNotes?.filter((item) => item.id!==id)
+    setFilteredNotes(filterNo);
   }
   const [toggle,setToggle]=useState(false)
   useEffect(() => {
