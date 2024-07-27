@@ -1,9 +1,8 @@
 import React, { useRef } from 'react'
-
 function Header({setAddNote,searchFunction}) {
   const searchRef=useRef();
   return (
-    <div className=' py-4 bg-blueBG text-white flex justify-end'>
+    <div className=' py-4 bg-blueBG  text-white flex justify-end'>
         <div className='w-[60%] flex justify-between px-4  headInnerDiv' >
             <select ref={searchRef} name="" id="" className='bg-blueBG outline-none text-white'>
               <option value="content">Content</option>

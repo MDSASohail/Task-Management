@@ -1,7 +1,5 @@
 
-import { useState, useEffect, useRef } from "react";
-import { Save, Close, Edit } from "./Icons/Icon";
-import {format} from 'timeago.js'
+import { useState } from "react";
 import {note} from './Data/Default-Values'
 import Header from "./Components/Header";
 import './App.css'
@@ -11,18 +9,15 @@ import EachNote from "./Components/EachNote";
 import useLocalStorege from "./Custom-Hook/useLocalStorege";
 function App() {
  
-  const time = new Date().toLocaleString();
+  
   const [allNotes,setAllNotes]=useLocalStorege("allNotes",note);
-  console.log(allNotes)
   const [editenable, setEditEnable] = useState(-1);
   const [editText, setEditText] = useState('');
   const [addNote, setAddNote] = useState(false);
   const [page, setPage] = useState(1);
   const totalPages = Math.ceil(allNotes.length / 10);
-  
   const [filteredNotes, setFilteredNotes] = useState(null);
- 
-  console.log(filteredNotes)
+ //Function to search the notes.
   const searchFunction = (e,title) => {
     
     if (e.target.value === "") {
@@ -35,22 +30,7 @@ function App() {
     }
   }
 
-
-
-
-
-  const todoRef = useRef();
-  //It will add a
-  const save = () => {
-    console.log("Saving a note")
-    const currentTodo = todoRef.current.value;
-    if (currentTodo.trim() === '') return;
-    todoRef.current.value = "";
-    setAllNotes([{ todo: currentTodo, completed: false }, ...allNotes,]);
-  }
-
-
-  //Update notes if it edit, complete or incomplete.
+  //Update notes if it edit.
   const updateTOdo = (id, to) => {
     console.log("To update ",id)
     const notes=allNotes.map((item) => {
@@ -76,20 +56,14 @@ function App() {
     const filterNo=filteredNotes?.filter((item) => item.id!==id)
     setFilteredNotes(filterNo);
   }
-  const [toggle,setToggle]=useState(false)
-  useEffect(() => {
-    if (!toggle)
-      document.documentElement.classList.remove('dark');
-    else
-      document.documentElement.classList.add('dark');
-  }, [toggle])
+
 
   return (
     <>
     <div>
       <Header setAddNote={setAddNote} searchFunction={searchFunction}/>
       <Pagination page={page} length={allNotes.length} setPage={setPage} totalPages={totalPages}/>
-      {addNote && <Note setAddNote={setAddNote} ref={todoRef}  setAllNotes={setAllNotes} allNotes={allNotes}/>}
+      {addNote && <Note setAddNote={setAddNote}  setAllNotes={setAllNotes} allNotes={allNotes}/>}
     </div>
     <div className='w-full pb pb-10 border-2 min-h-[80vh] box-border text-xl linearGradient dark:bg-gray-800  bg-wholeBG   flex justify-center'>
       

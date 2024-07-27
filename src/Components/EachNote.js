@@ -1,6 +1,6 @@
 import { Save, Close, Edit } from "../Icons/Icon";
 import {format} from 'timeago.js'
-const time = new Date().toLocaleString();
+
 function EachNote({editenable,page,index,item,editText,setEditEnable,setEditText,updateTOdo,deleteList,filterComponent}) {
   return (
     <div  className={`w-full flex items-center eachNodeDiv justify-between relative  pb-6  bg-white p-2 my-2 rounded-md `}>

@@ -1,10 +1,9 @@
-import React from 'react'
 
 function Pagination({page,length,setPage,totalPages}) {
-  console.log("Pagination Component",page,length,totalPages)
+
   return (
     
-        <div className="  text-end  pr-10 bg-blueBG text-white ">
+        <div className="  text-end pb-3 pr-10 bg-blueBG text-white ">
            <button onClick={() => setPage(page - 1)} className={`px-3 cursor-pointer py-2 mx-2 transition-transform hover:scale-125 ${page !== 1 ?"visible":"invisible"}`}>⬅️</button>
            {
              [...Array(Math.ceil(length / 10))].map((_, index) => (

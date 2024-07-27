@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react'
+import  {  useState } from 'react'
 
 function useLocalStorege(key,initialValue) {
     //Function to get value from localStorage..........
